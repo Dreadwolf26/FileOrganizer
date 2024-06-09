@@ -7,10 +7,10 @@ import shutil
 #Your Starting directory where you want to pull the files from
 source_dir = "C:\\Users\\chris\\Downloads"
 #Target drectory to wear you file will be saved 
-target_dir = "C:\\Users\\chris\\OneDrive"
+target_dir = "C:\\Users\\chris\\Documents"
 
 #Create destination folders if they don't exist
-categories = ['Images', 'Documents', 'Music', 'Videos']
+categories = ['Images', 'Documents', 'Music', 'Videos', 'Emulators']
 for category in categories:
     category_path = os.path.join(target_dir, category)
     os.makedirs(category_path, exist_ok=True)
@@ -29,5 +29,7 @@ def sort_files_by_type(source_dir, target_dir):
                 shutil.move(file_path, os.path.join(target_dir, 'Music', filename))
             elif file_extension in ('mp4', 'avi', 'mkv','mov','wmv', 'flv','3gp','mpeg', 'webm', 'vob', 'rm', 'swf', 'ts'):
                 shutil.move(file_path, os.path.join(target_dir, 'Videos', filename))
+            elif file_extension in ('z64', 'bin', 'ciso','md','iso', 'smc'):
+                shutil.move(file_path, os.path.join(target_dir, 'Emulators', filename))
 
 sort_files_by_type(source_dir, target_dir)
